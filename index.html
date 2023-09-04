@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import { reactive } from './reactive.js'
+    import { effect } from './effect.js'
+    let user = reactive({
+      name: 'xiaocui',
+      age: 20,
+      sex: '男'
+    })
+    console.log('user:', user)
+    effect(() => {
+      // document.querySelector('#app').innerText = user.name + '-' + user.age + '-' + user.sex
+      document.querySelector('#app').innerText = user.name
+    })
+    setTimeout(() => {
+      user.name = 'dacui'
+      // setTimeout(() => {
+      //   user.age = 30
+      // }, 2000)
+    }, 2000)
+  </script>
+</body>
+</html>
